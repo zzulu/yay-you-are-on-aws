@@ -80,8 +80,6 @@ Lightsail 인스턴스를 생성한다.
 $ git clone https://github.com/zzulu/yay-you-are-on-aws.git
 ```
 
-#### 3.3.2. Auto Server Setup Script 실행하기
-
 실행에 앞서 편의를 위하여 현재 폴더를 변경하자.
 
 ```console
