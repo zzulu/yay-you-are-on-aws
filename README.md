@@ -393,11 +393,40 @@ end
 
 S3에 이미지를 올리기 위한 모든 설정을 완료하였다. 새로운 게시글을 작성해보고 이미지가 S3 버킷에 잘 저장되는지 확인해보자.
 
+### 5.5. Lightsail 적용하기
+
+Lightsail console을 열어 프로젝트 폴더로 이동한다. 이동 후 git pull로 프로젝트의 변경사항을 가져오고, bundle install로 gem들을 설치한다.
+
+```console
+$ cd fake_insta
+$ git pull
+$ bundle install
+```
+
+`config` 폴더의 `application.yml` 파일을 열어 IAM에서 발급받은 키를 입력한다.
+
+```console
+$ vi config/application.yml
+```
+
+붙여넣기가 안되므로 틀리지않게 한글자씩 잘 입력한다.
+
+```yaml
+  AWS_ACCESS_KEY_ID: (각자 발급받은 키를 입력한다.)
+  AWS_SECRET_ACCESS_KEY: (각자 발급받은 키를 입력한다.)
+```
+
+아래의 명령어로 프로젝트를 refresh 한다.
+
+```console
+touch tmp/restart.txt
+```
+
+Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 접속 후, 여기서도 게시글 작성과 이미지 업로드가 잘 되는지 확인한다.
+
+
 
 ## 6. SES
 
 gem [aws-sdk-rails](https://github.com/aws/aws-sdk-rails)
-
-
-devise 비밀번호 찾기 메일 보내기
 
