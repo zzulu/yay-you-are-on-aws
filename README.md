@@ -15,6 +15,16 @@
 
 ## Lightsail
 
+
+![Lightsail](/images/001.png)
+
+
+![Create Instance](/images/002.png)
+
+
+![Instance Configure](/images/003.png)
+
+
 그냥 클릭 몇번으로 인스턴스 생성 할 수 있음... 신기...
 선택 해야할 것들 이미지만 가져와서 이거이거 선택하세요. 하면 될 듯.
 
