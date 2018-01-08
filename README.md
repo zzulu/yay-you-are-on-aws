@@ -428,3 +428,31 @@ Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 �
 
 gem [aws-sdk-rails](https://github.com/aws/aws-sdk-rails)
 
+`config/initializers` 폴더 안에 `aws-sdk.rb` 파일을 생성하여 아래의 코드를 작성한다.
+
+```ruby
+# AWS credentials
+Aws.config[:region] = 'us-west-2'
+Aws.config[:credentials] = Aws::Credentials.new(ENV["AWS_ACCESS_KEY_ID"], ENV["AWS_SECRET_ACCESS_KEY"])
+```
+
+`config` 폴더 안의 `application.rb` 파일에 아래의 코드를 작성한다.
+
+```ruby
+# Mailer Option
+config.action_mailer.delivery_method = :aws_sdk
+```
+
+`config/environments` 폴더 안의 `development.rb` 파일에 아래의 코드를 작성한다.
+
+```ruby
+# Mailer Option
+config.action_mailer.default_url_options = { host: "http://localhost", port: 3000 }
+```
+
+`config/environments` 폴더 안의 `production.rb` 파일에 아래의 코드를 작성한다.
+
+```ruby
+# Devise Mailing Option
+config.action_mailer.default_url_options = { host: "https://uni.likelion.org" }
+```
