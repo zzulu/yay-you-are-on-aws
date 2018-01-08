@@ -454,5 +454,5 @@ config.action_mailer.default_url_options = { host: "http://localhost", port: 300
 
 ```ruby
 # Devise Mailing Option
-config.action_mailer.default_url_options = { host: "https://uni.likelion.org" }
+config.action_mailer.default_url_options = { host: "https://(Lightsail IP 주소)" }
 ```
