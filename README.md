@@ -91,7 +91,7 @@ $ cd ~/yay-you-are-on-aws
 서버 설정을 매우 편리하게 해주기 위하여 script를 작성하였다. 아까 받은 Script를 실행하면 모든 설정이 자동으로 될 것이다. `sh` 명령어를 사용하여 실행해보자. 우선 `rbenv.sh` 먼저.
 
 ```console
-$ sh ./rbenv.sh
+$ sh ./scripts/rbenv.sh
 ```
 
 #### 3.3.2. shell 새로고침
@@ -126,7 +126,7 @@ $ gem install rails -v 4.2.9
 Web Server인 **Nginx**와 Application Server인 **Passenger**를 설치하는 script를 실행하자.
 
 ```console
-$ sh ./nginx.sh
+$ sh ./scripts/nginx.sh
 ```
 
 
