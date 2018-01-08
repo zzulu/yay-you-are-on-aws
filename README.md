@@ -432,7 +432,7 @@ gem [aws-sdk-rails](https://github.com/aws/aws-sdk-rails)
 gem 'aws-sdk-rails'
 ```
 
-``console
+```console
 $ bundle install
 ```
 
