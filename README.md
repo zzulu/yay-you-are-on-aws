@@ -417,7 +417,7 @@ $ vi config/application.yml
 아래의 명령어로 프로젝트를 refresh 한다.
 
 ```console
-touch tmp/restart.txt
+$ touch tmp/restart.txt
 ```
 
 Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 접속 후, 여기서도 게시글 작성과 이미지 업로드가 잘 되는지 확인한다.
