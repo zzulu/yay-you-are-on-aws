@@ -86,7 +86,7 @@ $ git clone https://github.com/zzulu/yay-you-are-on-aws.git
 $ cd ~/yay-you-are-on-aws
 ```
 
-#### 3.3.1. rbenv.sh 실행
+#### 3.3.2. rbenv.sh 실행
 
 서버 설정을 매우 편리하게 해주기 위하여 script를 작성하였다. 아까 받은 Script를 실행하면 모든 설정이 자동으로 될 것이다. `sh` 명령어를 사용하여 실행해보자. 우선 `rbenv.sh` 먼저.
 
@@ -94,7 +94,7 @@ $ cd ~/yay-you-are-on-aws
 $ sh ./scripts/rbenv.sh
 ```
 
-#### 3.3.2. shell 새로고침
+#### 3.3.3. shell 새로고침
 
 `rbenv.sh`에서 많은 것들을 설치하였는데, 그것들을 사용하기 위하여 shell을 refresh 해주자. 가끔 프로그램을 설치하고 컴퓨터를 재부팅 해주는 것과 같은 이유이다.
 
@@ -102,7 +102,7 @@ $ sh ./scripts/rbenv.sh
 $ exec $SHELL
 ```
 
-#### 3.3.3. Ruby 설치
+#### 3.3.4. Ruby 설치
 
 `rbenv.sh`를 통해 우리는 Rails 설치 및 실행에 필요한 모든 프로그램과 `rbenv`를 설치해주었다. Ruby의 경우 rbenv를 통해 직접 설치해주어야 한다.
 
@@ -113,7 +113,7 @@ $ gem install bundler
 $ rbenv rehash
 ```
 
-#### 3.3.4. Rails 설치
+#### 3.3.5. Rails 설치
 
 마지막으로 rails까지 설치를 완료하자.
 
@@ -121,7 +121,7 @@ $ rbenv rehash
 $ gem install rails -v 4.2.9
 ```
 
-#### 3.3.5. nginx.sh 실행하기
+#### 3.3.6. nginx.sh 실행하기
 
 Web Server인 **Nginx**와 Application Server인 **Passenger**를 설치하는 script를 실행하자.
 
@@ -153,7 +153,7 @@ $ sudo vi /etc/nginx/passenger.conf
 passenger_ruby /home/ubuntu/.rbenv/shims/ruby;
 ```
 
-#### 3.5.2 Nginx 설정하기
+#### 3.5.2. Nginx 설정하기
 ```console
 $ sudo vi /etc/nginx/nginx.conf
 ```
@@ -197,12 +197,6 @@ server {
         #   # as directory, then fall back to displaying a 404.
         #   try_files $uri $uri/ =404;
         # }
-
-        # redirect server error pages to the static page /50x.html
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
 }
 ```
 
