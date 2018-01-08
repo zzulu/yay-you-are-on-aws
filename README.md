@@ -67,7 +67,6 @@ Lightsail 인스턴스를 생성한다.
 ### 3.2. 주의사항
 
 - 인스턴스를 생성한 순간부터 과금이 될 수 있다. 과금 유의사항을 항상 자세히 읽어보기를 권장하며, 사용하지 않을 인스턴스는 바로 삭제를 해주는 것이 좋다.
-- 웹 console에서는 **한글 입력** 및 **붙여넣기**가 안된다. 명령어를 입력할 때 오타가 생기지 않도록 조심하자.
 
 
 ### 3.3. Auto Server Setup Script
@@ -135,6 +134,7 @@ $ sh ./scripts/nginx.sh
 `1. 사용할 프로젝트 선택`에서 선택한 프로젝트를 Lightsail Instance로 가져온다. 여기서는 [classtak](https://github.com/classtak)의 fake_insta를 가져오지만 각자 개인의 프로젝트를 가져와도 된다.
 
 ```console
+$ cd ~
 $ git clone https://github.com/classtak/fake_insta.git
 ``` 
 
@@ -286,10 +286,9 @@ IAM을 검색하거나 '보안, 자격 증명 및 규정 준수' 항목에서 IA
 ![Create Group](/images/006.png)
 ![Define Group Name](/images/007.png)
 
-2개의 정책을 찾아서 등록해준다.
+정책 `AmazonS3FullAccess`을 찾아서 등록해준다.
 
 ![Attach Policy S3](/images/008-1.png)
-![Attach Policy SES](/images/008-2.png)
 
 그룹이 생성된 것을 확인할 수 있다.
 
@@ -385,7 +384,7 @@ end
 
 S3에 이미지를 올리기 위한 모든 설정을 완료하였다. 새로운 게시글을 작성해보고 이미지가 S3 버킷에 잘 저장되는지 확인해보자.
 
-### 5.5. Lightsail 적용하기
+### 5.5. Lightsail에 적용하기
 
 Lightsail console을 열어 프로젝트 폴더로 이동한다. 이동 후 git pull로 프로젝트의 변경사항을 가져오고, bundle install로 gem들을 설치한다.
 
@@ -401,7 +400,7 @@ $ bundle install
 $ vi config/application.yml
 ```
 
-붙여넣기가 안되므로 틀리지않게 한글자씩 잘 입력한다.
+우측 하단에 메모장 모양의 아이콘이 있다. 메모장을 클릭하여 붙여놓고자 하는 텍스트를 입력하고 메모장을 닫은 후, `ctrl + shift + v` 단축키로 붙여넣을 수 있다.
 
 ```yaml
   AWS_ACCESS_KEY_ID: (각자 발급받은 키를 입력한다.)
@@ -415,54 +414,3 @@ $ touch tmp/restart.txt
 ```
 
 Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 접속 후, 여기서도 게시글 작성과 이미지 업로드가 잘 되는지 확인한다.
-
-
-
-## 6. SES
-
-AWS SES에 접속하여, Email 주소를 등록한다.
-
-gem [aws-sdk-rails](https://github.com/aws/aws-sdk-rails)
-
-```ruby
-gem 'aws-sdk-rails'
-```
-
-```console
-$ bundle install
-```
-
-`config/initializers` 폴더 안에 `aws-sdk.rb` 파일을 생성하여 아래의 코드를 작성한다.
-
-```ruby
-# AWS credentials
-Aws.config[:region] = 'us-west-2'
-Aws.config[:credentials] = Aws::Credentials.new(ENV["AWS_ACCESS_KEY_ID"], ENV["AWS_SECRET_ACCESS_KEY"])
-```
-
-`config` 폴더 안의 `application.rb` 파일에 아래의 코드를 작성한다.
-
-```ruby
-# Mailer Option
-config.action_mailer.delivery_method = :aws_sdk
-```
-
-`config/initializers` 폴더 안에 `devise.rb` 파일에 아래의 코드를 수정한다.
-
-```ruby
-config.mailer_sender = '(SES에 등록한 본인 email)'
-```
-
-`config/environments` 폴더 안의 `development.rb` 파일에 아래의 코드를 작성한다.
-
-```ruby
-# Mailer Option
-config.action_mailer.default_url_options = { host: "http://localhost", port: 3000 }
-```
-
-`config/environments` 폴더 안의 `production.rb` 파일에 아래의 코드를 작성한다.
-
-```ruby
-# Devise Mailing Option
-config.action_mailer.default_url_options = { host: "https://(Lightsail IP 주소)" }
-```
