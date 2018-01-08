@@ -426,6 +426,8 @@ Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 �
 
 ## 6. SES
 
+AWS SES에 접속하여, Email 주소를 등록한다.
+
 gem [aws-sdk-rails](https://github.com/aws/aws-sdk-rails)
 
 ```ruby
@@ -449,6 +451,12 @@ Aws.config[:credentials] = Aws::Credentials.new(ENV["AWS_ACCESS_KEY_ID"], ENV["A
 ```ruby
 # Mailer Option
 config.action_mailer.delivery_method = :aws_sdk
+```
+
+`config/initializers` 폴더 안에 `devise.rb` 파일에 아래의 코드를 수정한다.
+
+```ruby
+config.mailer_sender = '(SES에 등록한 본인 email)'
 ```
 
 `config/environments` 폴더 안의 `development.rb` 파일에 아래의 코드를 작성한다.
