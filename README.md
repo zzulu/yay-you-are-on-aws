@@ -273,7 +273,7 @@ $ RAILS_ENV=production rake assets:precompile
 아래의 명령어로 프로젝트를 refresh 한다.
 
 ```console
-touch tmp/restart.txt
+$ touch tmp/restart.txt
 ```
 
 Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 접속이 되는지 확인한다.
@@ -427,6 +427,14 @@ Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 �
 ## 6. SES
 
 gem [aws-sdk-rails](https://github.com/aws/aws-sdk-rails)
+
+```ruby
+gem 'aws-sdk-rails'
+```
+
+``console
+$ bundle install
+```
 
 `config/initializers` 폴더 안에 `aws-sdk.rb` 파일을 생성하여 아래의 코드를 작성한다.
 
